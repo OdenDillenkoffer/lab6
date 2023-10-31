@@ -1,8 +1,20 @@
 def menu():
     print("Menu")
-    #simple menu loop
+    # simple menu loop
     print("-" * 13)
-    print("1. Encode\n2. Decode\n3. Quit")
+    print("1. Encode\n2. Decode\n3. Quit\n")
+
+
+# Decodes encoded password by adding 7 to the existing digit, bringing the total addition to 10. Modulo by 10.
+def decode(encoded_password):
+    enc_pass_list = []
+    for char in encoded_password:
+        orig_digit = (int(char) + 7) % 10
+        enc_pass_list.append(str(orig_digit))
+    orig_password = ''.join(enc_pass_list)
+
+    print(f"The encoded password is {encoded_password}, and the original password was {orig_password}.\n")
+
 
 run_loop = True
 while run_loop:
@@ -38,9 +50,9 @@ while run_loop:
             n += 1
         encoded = "".join(usable_list)
         # creates the encoded password and saves it as a string
-        print("Your password has been encoded and stored!")
+        print("Your password has been encoded and stored!\n")
     elif choice == 2:
-        print(f"The encoded password is {encoded}, and the original password was {to_encode}.")
+        decode(encoded)
     elif choice == 3:
         exit()
     else:
